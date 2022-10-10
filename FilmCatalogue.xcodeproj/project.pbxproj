@@ -26,7 +26,6 @@
 		3888237528F42F33005C7B25 /* MovieGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237428F42F33005C7B25 /* MovieGrid.swift */; };
 		3888237728F42F46005C7B25 /* ReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237628F42F46005C7B25 /* ReviewList.swift */; };
 		3888237928F42F56005C7B25 /* StaticAppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237828F42F56005C7B25 /* StaticAppHeader.swift */; };
-		3888237B28F42F67005C7B25 /* YoutubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237A28F42F67005C7B25 /* YoutubePlayer.swift */; };
 		3888237D28F4305A005C7B25 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237C28F4305A005C7B25 /* Movies.swift */; };
 		3888237F28F43067005C7B25 /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888237E28F43067005C7B25 /* Genres.swift */; };
 		3888238128F43072005C7B25 /* Trailers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888238028F43072005C7B25 /* Trailers.swift */; };
@@ -35,6 +34,7 @@
 		3888238728F43116005C7B25 /* MovieInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888238628F43116005C7B25 /* MovieInfoViewModel.swift */; };
 		3888238928F43154005C7B25 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888238828F43154005C7B25 /* MainScreen.swift */; };
 		3888238B28F43161005C7B25 /* MovieInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888238A28F43161005C7B25 /* MovieInfoScreen.swift */; };
+		389FDF7B28F43A7100BA0AFB /* YoutubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389FDF7A28F43A7100BA0AFB /* YoutubePlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,6 @@
 		3888237428F42F33005C7B25 /* MovieGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGrid.swift; sourceTree = "<group>"; };
 		3888237628F42F46005C7B25 /* ReviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewList.swift; sourceTree = "<group>"; };
 		3888237828F42F56005C7B25 /* StaticAppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAppHeader.swift; sourceTree = "<group>"; };
-		3888237A28F42F67005C7B25 /* YoutubePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayer.swift; sourceTree = "<group>"; };
 		3888237C28F4305A005C7B25 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		3888237E28F43067005C7B25 /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		3888238028F43072005C7B25 /* Trailers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailers.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		3888238628F43116005C7B25 /* MovieInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoViewModel.swift; sourceTree = "<group>"; };
 		3888238828F43154005C7B25 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		3888238A28F43161005C7B25 /* MovieInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoScreen.swift; sourceTree = "<group>"; };
+		389FDF7A28F43A7100BA0AFB /* YoutubePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +205,7 @@
 				3888237428F42F33005C7B25 /* MovieGrid.swift */,
 				3888237628F42F46005C7B25 /* ReviewList.swift */,
 				3888237828F42F56005C7B25 /* StaticAppHeader.swift */,
-				3888237A28F42F67005C7B25 /* YoutubePlayer.swift */,
+				389FDF7A28F43A7100BA0AFB /* YoutubePlayer.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -401,8 +401,8 @@
 				3888236B28F42E50005C7B25 /* Date+Extension.swift in Sources */,
 				3888237328F42F10005C7B25 /* KingFisherImage.swift in Sources */,
 				3888237528F42F33005C7B25 /* MovieGrid.swift in Sources */,
+				389FDF7B28F43A7100BA0AFB /* YoutubePlayer.swift in Sources */,
 				3888238528F430FC005C7B25 /* MainViewModel.swift in Sources */,
-				3888237B28F42F67005C7B25 /* YoutubePlayer.swift in Sources */,
 				3888237F28F43067005C7B25 /* Genres.swift in Sources */,
 				3888236D28F42E65005C7B25 /* String+Extension.swift in Sources */,
 				3888238128F43072005C7B25 /* Trailers.swift in Sources */,
