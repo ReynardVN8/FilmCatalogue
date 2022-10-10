@@ -12,6 +12,7 @@ import Alamofire
 class MainViewModel: ObservableObject{
     @Published var movieListHeaders: MovieListHeaders?
     @Published var movieDetails: [MovieDetail]?
+    @Published var moviesByGenre: [MovieDetail]?
     @Published var genreHeaders: GenreHeaders?
     @Published var genre: [Genre]?
     @Published var lastVideoID: Int = 0
@@ -53,13 +54,39 @@ class MainViewModel: ObservableObject{
         params["api_key"] = APIKey
         params["language"] = "en-US"
         
-        AF.request("\(baseApiURL)/genre/movie/list", method: .get , parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
+        AF.request("\(baseApiURL)/genre/movie/list", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
             
             switch response.result{
             case .success:
                 let json = try? JSON(data: response.data!)
                 self.genreHeaders = GenreHeaders(json!)
                 self.genre = (self.genreHeaders?.genres)
+                self.connectionStatus = true
+                
+            case let .failure(error):
+                debugPrint(error)
+                self.connectionStatus = false
+            }
+        }
+    }
+    
+    func getMoviesByGenre(gerneID: Int){
+        var params = [String:String]()
+        params["api_key"] = APIKey
+        params["language"] = "en-US"
+        params["page"] = "\(nextPage)"
+        params["with_genres"] = "\(gerneID)"
+        
+        AF.request("\(baseApiURL)/discover/movie", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
+            
+            switch response.result{
+            case .success:
+                let json = try? JSON(data: response.data!)
+                self.movieListHeaders = MovieListHeaders(json!)
+                let oldMoviesByGenre = self.moviesByGenre ?? []
+                self.moviesByGenre = (oldMoviesByGenre) + (self.movieListHeaders?.result ?? [])
+                self.lastVideoID = (self.moviesByGenre?.last!.id)!
+                self.nextPage += 1
                 self.connectionStatus = true
                 
             case let .failure(error):
