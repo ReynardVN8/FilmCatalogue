@@ -33,7 +33,7 @@ struct MovieGrid: View{
                     .shadow(radius: 5)
                     .onAppear(){
                         if(VM.nextPage < VM.movieListHeaders?.total_pages ?? 1){
-                            VM.getMovies(getType: .Movie, getMovieType: .NowPlaying)
+                            VM.getMovies(getMovieType: .NowPlaying)
                         }
                     }
             } else {

@@ -26,7 +26,7 @@ struct MovieInfoScreen: View {
             Spacer().frame(height: 35)
             Button {
                 isPresented = true
-                movieInfoVM.getReview(getType: .Movie, movieID: self.movieID, page: 1)
+                movieInfoVM.getReview(movieID: self.movieID, page: 1)
             } label: {
                 Text("Click for the reviews")
                     .foregroundColor(.white)
@@ -39,8 +39,8 @@ struct MovieInfoScreen: View {
                 .cornerRadius(3)
         }
             .onAppear(){
-                movieInfoVM.getTrailer(getType: .Movie, movieID: self.movieID)
-                movieInfoVM.getDetailedMovie(getType: .Movie, movieID: self.movieID)
+                movieInfoVM.getTrailer(movieID: self.movieID)
+                movieInfoVM.getDetailedMovie(movieID: self.movieID)
             }
             .sheet(isPresented: $isPresented, content: {
                 reviewSection
