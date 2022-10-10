@@ -16,7 +16,7 @@ struct MainScreen: View {
     ]
     
     init(){
-        mainVM.getMovies(getMovieType: .NowPlaying)
+        mainVM.getMovies(getType: .Movie ,getMovieType: .NowPlaying)
     }
     
     var body: some View {

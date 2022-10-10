@@ -8,7 +8,7 @@
 import Foundation
 
 // API
-let baseApiURL = "https://api.themoviedb.org/3/movie"
+let baseApiURL = "https://api.themoviedb.org/3"
 let APIKey = "fd99578f5667a6cec7e3d7c789f7175f"
 
 // Movies

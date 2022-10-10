@@ -20,13 +20,13 @@ class MainViewModel: ObservableObject{
         self.connectionStatus = false
     }
     
-    func getMovies(getMovieType: GetMovieType){
+    func getMovies(getType: GetType, getMovieType: GetMovieType){
         var params = [String:String]()
         params["api_key"] = APIKey
         params["language"] = "en-US"
         params["page"] = "\(nextPage)"
         
-        AF.request("\(baseApiURL)\(getMovieType.rawValue)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
+        AF.request("\(baseApiURL)\(getType.rawValue)\(getMovieType.rawValue)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
             
             switch response.result{
             case .success:
