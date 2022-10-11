@@ -15,7 +15,7 @@ struct DiscoverTabBar: View {
             HStack(alignment: .center, spacing: 10){
                 ForEach(DVM.genre ?? []){ genre in
                     Button {
-                        DVM.genre?.removeAll()
+                        DVM.moviesByGenre?.removeAll()
                         DVM.gerneID = genre.id
                         DVM.getMoviesByGenre()
                     } label: {
