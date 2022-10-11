@@ -16,14 +16,15 @@ struct DiscoverTabBar: View {
                 ForEach(DVM.genre ?? []){ genre in
                     Button {
                         DVM.moviesByGenre?.removeAll()
-                        DVM.gerneID = genre.id
+                        DVM.nextPage = 1
+                        DVM.currentGenre = genre.id
                         DVM.getMoviesByGenre()
                     } label: {
                         Text(genre.name)
                             .font(.title3)
                             .foregroundColor(.white)
-                            .bold(genre.id == DVM.gerneID)
-                            .underline(genre.id == DVM.gerneID)
+//                            .bold(genre.id == DVM.gerneID)
+//                            .underline(genre.id == DVM.gerneID)
                             .padding(10)
                             .cornerRadius(2)
                     }

@@ -14,7 +14,7 @@ class DiscoverViewModel: ObservableObject{
     @Published var moviesByGenre: [MovieDetail]?
     @Published var genreHeaders: GenreHeaders?
     @Published var genre: [Genre]?
-    @Published var gerneID: Int = 28
+    @Published var currentGenre: Int = 28
     @Published var lastVideoID: Int = 0
     @Published var nextPage: Int = 1
     @Published var discoverStatus: Bool
@@ -49,7 +49,7 @@ class DiscoverViewModel: ObservableObject{
         params["api_key"] = APIKey
         params["language"] = "en-US"
         params["page"] = "\(nextPage)"
-        params["with_genres"] = "\(gerneID)"
+        params["with_genres"] = "\(currentGenre)"
         
         AF.request("\(baseApiURL)/discover/movie", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
             
