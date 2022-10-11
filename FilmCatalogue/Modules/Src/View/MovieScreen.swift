@@ -31,15 +31,18 @@ struct MovieScreen: View {
             VStack(alignment: .center){
                 HeaderMainScreen()
                 Spacer()
+                Color.lightYellow
+                    .frame(height: 90)
             }
+                .ignoresSafeArea(edges: .bottom)
         }
     }
     
     var content: some View{
         ScrollView{
             Spacer()
-                .frame(height: 70)
-            LazyVGrid(columns: column, spacing: 20){
+                .frame(height: 60)
+            LazyVGrid(columns: column, spacing: 10){
                 ForEach(movieVM.movieDetails ?? []){ movies in
                     if(movies.id == movieVM.lastVideoID){
                         MovieGrid(id: movies.id, title: movies.title, poster: movies.poster_path, MVM: movieVM, isLast: true)
