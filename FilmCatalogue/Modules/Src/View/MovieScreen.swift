@@ -20,11 +20,17 @@ struct MovieScreen: View {
     }
     
     var body: some View {
-        VStack{
-            if(movieVM.movieStatus){
-                content
-            } else {
-                internetError
+        ZStack{
+            VStack{
+                if(movieVM.movieStatus){
+                    content
+                } else {
+                    internetError
+                }
+            }
+            VStack(alignment: .center){
+                HeaderMainScreen()
+                Spacer()
             }
         }
     }

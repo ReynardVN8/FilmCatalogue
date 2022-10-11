@@ -80,7 +80,7 @@ struct DiscoverGrid: View{
                     .shadow(radius: 5)
                     .onAppear(){
                         if(DVM.nextPage < DVM.movieListHeaders?.total_pages ?? 1){
-//                            DVM.getMovies(getMovieType: .NowPlaying)
+                            DVM.getMoviesByGenre()
                         }
                     }
             } else {

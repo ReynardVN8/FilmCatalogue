@@ -12,25 +12,13 @@ struct MainScreen: View {
     var body: some View {
         NavigationStack{
             TabView{
-                ZStack{
-                    MovieScreen()
-                    VStack(alignment: .center){
-                        HeaderMainScreen()
-                        Spacer()
-                    }
-                }
+                MovieScreen()
                     .tabItem{
                         Image(systemName: "film.circle")
                         Text("Film")
                     }
                 
-                ZStack{
-                    DiscoverScreen()
-                    VStack(alignment: .center){
-                        HeaderMainScreen()
-                        Spacer()
-                    }
-                }
+                DiscoverScreen()
                     .tabItem{
                         Image(systemName: "magnifyingglass.circle")
                         Text("Discover")

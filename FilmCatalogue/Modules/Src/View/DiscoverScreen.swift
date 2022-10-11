@@ -17,24 +17,30 @@ struct DiscoverScreen: View {
     
     init(){
         discoverVM.getGenres()
-        discoverVM.getMoviesByGenre(gerneID: 28)
+        discoverVM.getMoviesByGenre()
     }
     
     var body: some View {
-        VStack{
-            if(discoverVM.discoverStatus){
-                content
-            } else {
-                internetError
+        ZStack{
+            VStack{
+                if(discoverVM.discoverStatus){
+                    content
+                } else {
+                    internetError
+                }
+            }
+            VStack(alignment: .center, spacing: 0){
+                HeaderMainScreen()
+                DiscoverTabBar(DVM: discoverVM)
+                Spacer()
             }
         }
-        
     }
     
     var content: some View{
         ScrollView{
             Spacer()
-                .frame(height: 70)
+                .frame(height: 110)
             LazyVGrid(columns: column, spacing: 20){
                 ForEach(discoverVM.moviesByGenre ?? []){ movies in
                     if(movies.id == discoverVM.lastVideoID){

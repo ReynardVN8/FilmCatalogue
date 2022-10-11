@@ -7,27 +7,31 @@
 
 import SwiftUI
 
-struct CustomTabBar: View {
-    var VM: MainViewModel
-    var currentGenre: Int
+struct DiscoverTabBar: View {
+    var DVM: DiscoverViewModel
     
     var body: some View {
         ScrollView(.horizontal){
             HStack(alignment: .center, spacing: 10){
-                ForEach(VM.genre ?? []){ genre in
-                    Text(genre.name)
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .bold(genre.id == currentGenre)
-                        .underline(genre.id == currentGenre)
-                        .cornerRadius(2)
-                        .onTapGesture {
-                            VM.genre?.removeAll()
-                            VM.getMoviesByGenre(gerneID: genre.id)
-                        }
+                ForEach(DVM.genre ?? []){ genre in
+                    Button {
+                        /*
+                        DVM.genre?.removeAll()
+                        DVM.gerneID = genre.id
+                        DVM.getMoviesByGenre()
+                         */
+                    } label: {
+                        Text(genre.name)
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .bold(genre.id == DVM.gerneID)
+                            .underline(genre.id == DVM.gerneID)
+                            .padding(10)
+                            .cornerRadius(2)
+                    }
                 }
             }
         }
-            .background(Color.darkGrey)
+        .background(Color.darkGrey.gradient)
     }
 }
