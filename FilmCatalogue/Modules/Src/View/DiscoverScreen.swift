@@ -46,11 +46,12 @@ struct DiscoverScreen: View {
                 .frame(height: 110)
             LazyVGrid(columns: column, spacing: 20){
                 ForEach(discoverVM.moviesByGenre ?? []){ movies in
-                    if(movies.id == discoverVM.lastVideoID){
-                        DiscoverGrid(id: movies.id, title: movies.title, poster: movies.poster_path, DVM: discoverVM , isLast: true)
-                    } else {
-                        DiscoverGrid(id: movies.id, title: movies.title, poster: movies.poster_path, DVM: discoverVM ,isLast: false)
-                    }
+                    Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
+                        .onAppear(){
+                            if(movies.id == discoverVM.lastVideoID && discoverVM.nextPage <= discoverVM.movieListHeaders?.total_pages ?? 1){
+                                discoverVM.getMoviesByGenre()
+                            }
+                        }
                 }
             }
         }
