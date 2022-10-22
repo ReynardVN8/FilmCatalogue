@@ -11,11 +11,10 @@ struct MovieInfoScreen: View {
     @ObservedObject var movieInfoVM = MovieInfoViewModel()
     @State var isPresented = false
     
-    var movieID: Int = 0
     var currentPage = 1
     
     init(id: Int){
-        self.movieID = id
+        movieInfoVM.movieID = id
     }
     
     var body: some View {
@@ -26,7 +25,7 @@ struct MovieInfoScreen: View {
             Spacer().frame(height: 35)
             Button {
                 isPresented = true
-                movieInfoVM.getReview(movieID: self.movieID, page: 1)
+                movieInfoVM.getReview(page: 1)
             } label: {
                 Text("Click for the reviews")
                     .foregroundColor(.white)
@@ -39,8 +38,8 @@ struct MovieInfoScreen: View {
                 .cornerRadius(3)
         }
             .onAppear(){
-                movieInfoVM.getTrailer(movieID: self.movieID)
-                movieInfoVM.getDetailedMovie(movieID: self.movieID)
+                movieInfoVM.getTrailer()
+                movieInfoVM.getDetailedMovie()
             }
             .sheet(isPresented: $isPresented, content: {
                 reviewSection
