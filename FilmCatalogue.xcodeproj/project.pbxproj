@@ -39,6 +39,7 @@
 		38ADC45C28F50DC3001F4F71 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC45B28F50DC3001F4F71 /* DiscoverViewModel.swift */; };
 		38ADC45E28F50DD9001F4F71 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC45D28F50DD9001F4F71 /* MovieViewModel.swift */; };
 		38ADC46228F51910001F4F71 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC46128F51910001F4F71 /* Grid.swift */; };
+		93E1A72D2903EA9100BF7FD2 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1A72C2903EA9100BF7FD2 /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		38ADC45B28F50DC3001F4F71 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		38ADC45D28F50DD9001F4F71 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		38ADC46128F51910001F4F71 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		93E1A72C2903EA9100BF7FD2 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				3888237828F42F56005C7B25 /* StaticAppHeader.swift */,
 				389FDF7A28F43A7100BA0AFB /* YoutubePlayer.swift */,
 				389FDF7C28F4616300BA0AFB /* CustomTabBar.swift */,
+				93E1A72C2903EA9100BF7FD2 /* Loading.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				3888238728F43116005C7B25 /* MovieInfoViewModel.swift in Sources */,
 				38ADC45C28F50DC3001F4F71 /* DiscoverViewModel.swift in Sources */,
 				3888232B28F42C4B005C7B25 /* FilmCatalogueApp.swift in Sources */,
+				93E1A72D2903EA9100BF7FD2 /* Loading.swift in Sources */,
 				3888237928F42F56005C7B25 /* StaticAppHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
