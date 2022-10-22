@@ -32,7 +32,7 @@ struct MovieGrid: View{
                     .cornerRadius(5)
                     .shadow(radius: 5)
                     .onAppear(){
-                        if(MVM.nextPage < MVM.movieListHeaders?.total_pages ?? 1){
+                        if(MVM.nextPage <= MVM.movieListHeaders?.total_pages ?? 1){
                             MVM.getMovies()
                         }
                     }
@@ -79,7 +79,7 @@ struct DiscoverGrid: View{
                     .cornerRadius(5)
                     .shadow(radius: 5)
                     .onAppear(){
-                        if(DVM.nextPage < DVM.movieListHeaders?.total_pages ?? 1){
+                        if(DVM.nextPage <= DVM.movieListHeaders?.total_pages ?? 1){
                             DVM.getMoviesByGenre()
                         }
                     }
