@@ -28,8 +28,9 @@ struct MovieScreen: View {
                     internetError
                 }
             }
-            VStack(alignment: .center){
+            VStack(alignment: .center, spacing: 0){
                 HeaderMainScreen()
+                MovieTabBar(MVM: movieVM)
                 Spacer()
                 Color.lightYellow
                     .frame(height: 90)
@@ -41,7 +42,7 @@ struct MovieScreen: View {
     var content: some View{
         ScrollView{
             Spacer()
-                .frame(height: 60)
+                .frame(height: 110)
             LazyVGrid(columns: column, spacing: 10){
                 ForEach(movieVM.movieDetails ?? []){ movies in
                     Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
