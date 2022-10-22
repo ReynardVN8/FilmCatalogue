@@ -17,6 +17,7 @@ class MovieInfoViewModel: ObservableObject{
     @Published var reviewHeaders: ReviewHeaders?
     @Published var review: [Review]?
     @Published var authors: [AuthorDetail]?
+    @Published var movieID: Int = 0
     @Published var trailerStatus: Bool = false
     @Published var descriptionStatus: Bool = false
     @Published var reviewStatus: Bool = false
@@ -30,27 +31,28 @@ class MovieInfoViewModel: ObservableObject{
         reviewStatus = false
     }
     
-    func getTrailer(movieID: Int){
+    //MARK: Temp Fix
+    func getTrailer(){
         var params = [String:String]()
         params["api_key"] = APIKey
         params["language"] = "en-US"
         
-        AF.request("\(baseApiURL)/\(movieID)/videos", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response { response in
+        AF.request("\(baseApiURL)/movie/\(movieID)/videos", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response { response in
             
             switch response.result{
             case .success:
-                let json = try? JSON(data: response.data!)
-                self.trailerHeaders = TrailerHeaders(json!)
-                self.trailer = (self.trailerHeaders?.result)
-                
-                if let trailer = self.trailer?.first(where: {$0.name == "Official Trailer"}){
-                    self.youtubeKey = trailer.key
-                    self.trailerStatus = true
-                } else if let trailer = self.trailer?.first(where: {$0.name == "Teaser"}) {
-                    self.youtubeKey = trailer.key
-                    self.trailerStatus = true
-                } else {
-                    self.trailerStatus = false
+                if(response.data != nil){
+                    let json = try? JSON(data: response.data!)
+                    self.trailerHeaders = TrailerHeaders(json!)
+                    self.trailer = (self.trailerHeaders?.result)
+                    
+                    if let trailer = self.trailer?.first(where: {$0.name == "Official Trailer"}){
+                        self.youtubeKey = trailer.key
+                        self.trailerStatus = true
+                    } else if let trailer = self.trailer?.first(where: {$0.name == "Teaser"}) {
+                        self.youtubeKey = trailer.key
+                        self.trailerStatus = true
+                    }
                 }
                 
             case let.failure(error):
@@ -60,12 +62,12 @@ class MovieInfoViewModel: ObservableObject{
         }
     }
     
-    func getDetailedMovie(movieID: Int){
+    func getDetailedMovie(){
         var params = [String:String]()
         params["api_key"] = APIKey
         params["language"] = "en-US"
         
-        AF.request("\(baseApiURL)/\(movieID)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
+        AF.request("\(baseApiURL)/movie/\(movieID)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
             
             switch response.result{
             case .success:
@@ -83,13 +85,13 @@ class MovieInfoViewModel: ObservableObject{
         }
     }
     
-    func getReview(movieID: Int, page: Int){
+    func getReview(page: Int){
         var params = [String:String]()
         params["api_key"] = APIKey
         params["language"] = "en-US"
         params["page"] = "\(page)"
         
-        AF.request("\(baseApiURL)/\(movieID)/reviews", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response { response in
+        AF.request("\(baseApiURL)/movie/\(movieID)/reviews", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response { response in
             
             switch response.result{
             case .success:

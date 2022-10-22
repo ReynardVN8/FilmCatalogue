@@ -1,32 +1,33 @@
 //
-//  MainViewModel.swift
+//  MovieViewModel.swift
 //  FilmCatalogue
 //
-//  Created by Reynard Vincent Nata on 10/10/22.
+//  Created by Reynard Vincent Nata on 11/10/22.
 //
 
 import Foundation
 import SwiftyJSON
 import Alamofire
 
-class MainViewModel: ObservableObject{
+class MovieViewModel: ObservableObject{
     @Published var movieListHeaders: MovieListHeaders?
     @Published var movieDetails: [MovieDetail]?
+    @Published var movieType: GetMovieType = .NowPlaying
     @Published var lastVideoID: Int = 0
     @Published var nextPage: Int = 1
-    @Published var connectionStatus: Bool
+    @Published var movieStatus: Bool
     
     init(){
-        self.connectionStatus = false
+        self.movieStatus = false
     }
     
-    func getMovies(getMovieType: GetMovieType){
+    func getMovies(){
         var params = [String:String]()
         params["api_key"] = APIKey
         params["language"] = "en-US"
         params["page"] = "\(nextPage)"
         
-        AF.request("\(baseApiURL)\(getMovieType.rawValue)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
+        AF.request("\(baseApiURL)/movie\(movieType.rawValue)", method: .get, parameters: params, encoder: URLEncodedFormParameterEncoder.default).response{ response in
             
             switch response.result{
             case .success:
@@ -36,11 +37,11 @@ class MainViewModel: ObservableObject{
                 self.movieDetails = (oldMovieDetails) + (self.movieListHeaders?.result ?? [])
                 self.lastVideoID = (self.movieDetails?.last!.id)!
                 self.nextPage += 1
-                self.connectionStatus = true
+                self.movieStatus = true
                 
             case let .failure(error):
                 debugPrint(error)
-                self.connectionStatus = false
+                self.movieStatus = false
             }
             
         }
