@@ -11,12 +11,14 @@ import SwiftUI
 struct Loading: View {
     @State var spinnerStart: CGFloat = 0.0
     @State var spinnerEndS1: CGFloat = 0.10
-    @State var rotationDegreeS1 = initialDegree
-    @State var isLoading = true
-    static let initialDegree: Angle = .degrees(270)
+    @State var rotationDegreeS1 = initialDegreeS1
+    static let initialDegreeS1: Angle = .degrees(250)
     let rotationTime: Double = 1.0
-    let animationTime: Double = 1.0
+    let animationTime: Double = 0.775
     let fullRotation: Angle = .degrees(360)
+    let width: CGFloat = 100
+    let height: CGFloat = 100
+    
     
     var body: some View {
         ZStack(){
@@ -25,25 +27,18 @@ struct Loading: View {
                 VStack(alignment: .center){
                     Spacer()
                     SpinningCircle(start: spinnerStart, end: spinnerEndS1, rotation: rotationDegreeS1, color: .lightYellow)
-                        .frame(width: 150, height: 150)
+                        .frame(width: width, height: height)
                     Spacer()
                 }
                 Spacer()
             }
         }
-        .animation(.default, value: isLoading)
+        .animation(.default, value: true)
         .background(Color.black)
         .onAppear{
             Timer.scheduledTimer(withTimeInterval: animationTime, repeats: true) { (mainTimer) in
                 self.animateSpinner()
             }
-            /*
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                withAnimation {
-                    self.isLoading = false
-                }
-            }
-             */
         }
     }
     
