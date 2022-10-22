@@ -44,7 +44,7 @@ struct MovieScreen: View {
                 .frame(height: 60)
             LazyVGrid(columns: column, spacing: 10){
                 ForEach(movieVM.movieDetails ?? []){ movies in
-                    MovieGrid(id: movies.id, title: movies.title, poster: movies.poster_path)
+                    Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
                         .onAppear(){
                             if(movies.id == movieVM.lastVideoID && movieVM.nextPage <= movieVM.movieListHeaders?.total_pages ?? 1){
                                 movieVM.getMovies()
