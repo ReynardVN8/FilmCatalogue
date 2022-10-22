@@ -13,9 +13,7 @@ struct Grid: View{
     var poster: String
     
     var body: some View{
-        NavigationLink {
-            MovieInfoScreen(id: id)
-        } label: {
+        PushView(destination: AnyView(MovieInfoScreen(id: id))) {
             VStack(alignment: .center, spacing: 5){
                 KFI(type: .mediumPoster, image: poster)
                     .aspectRatio(2/3, contentMode: .fit)

@@ -8,18 +8,10 @@
 import SwiftUI
 
 struct StaticAppHeader: View{
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View{
         HStack(alignment: .center){
-            Button {
-                self.presentationMode.wrappedValue.dismiss()
-            } label: {
-                Image(systemName: "arrow.backward")
-                    .resizable()
-                    .frame(width: 25, height: 20)
-                    .foregroundColor(.lightYellow)
-            }
+            PopView()
             Spacer()
             Text("Film Catalogue")
                 .font(.largeTitle)
