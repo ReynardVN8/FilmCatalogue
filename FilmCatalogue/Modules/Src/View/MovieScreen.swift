@@ -23,7 +23,10 @@ struct MovieScreen: View {
         ZStack{
             VStack{
                 if(movieVM.movieStatus){
-                    content
+                    ZStack{
+                        content
+                        // Loading()
+                    }
                 } else {
                     internetError
                 }
