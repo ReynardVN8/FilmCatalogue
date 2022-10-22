@@ -7,6 +7,70 @@
 
 import SwiftUI
 
+//MARK: Janky
+struct MovieTabBar: View{
+    var MVM: MovieViewModel
+    
+    var body: some View{
+        ScrollView(.horizontal){
+            HStack(alignment: .center, spacing: 10){
+                Button {
+                    MVM.movieDetails?.removeAll()
+                    MVM.nextPage = 1
+                    MVM.movieType = .NowPlaying
+                    MVM.getMovies()
+                } label: {
+                    Text("Now Playing")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .cornerRadius(2)
+                }
+                
+                Button {
+                    MVM.movieDetails?.removeAll()
+                    MVM.nextPage = 1
+                    MVM.movieType = .Popular
+                    MVM.getMovies()
+                } label: {
+                    Text("Popular")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .cornerRadius(2)
+                }
+                
+                Button {
+                    MVM.movieDetails?.removeAll()
+                    MVM.nextPage = 1
+                    MVM.movieType = .Upcoming
+                    MVM.getMovies()
+                } label: {
+                    Text("Upcoming")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .cornerRadius(2)
+                }
+                
+                Button {
+                    MVM.movieDetails?.removeAll()
+                    MVM.nextPage = 1
+                    MVM.movieType = .TopRated
+                    MVM.getMovies()
+                } label: {
+                    Text("Top Rated")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .cornerRadius(2)
+                }
+            }
+        }
+        .background(Color.darkGrey.gradient)
+    }
+}
+
 struct DiscoverTabBar: View {
     var DVM: DiscoverViewModel
     

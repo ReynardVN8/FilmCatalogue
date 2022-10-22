@@ -42,6 +42,7 @@
 		38ADC46828F54A55001F4F71 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC46728F54A55001F4F71 /* Routing.swift */; };
 		38ADC46A28F54AE9001F4F71 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC46928F54AE9001F4F71 /* MainInteractor.swift */; };
 		38ADC46C28F54AF7001F4F71 /* MovieInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADC46B28F54AF7001F4F71 /* MovieInfoInteractor.swift */; };
+		93E1A72D2903EA9100BF7FD2 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1A72C2903EA9100BF7FD2 /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		38ADC46728F54A55001F4F71 /* Routing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
 		38ADC46928F54AE9001F4F71 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		38ADC46B28F54AF7001F4F71 /* MovieInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoInteractor.swift; sourceTree = "<group>"; };
+		93E1A72C2903EA9100BF7FD2 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				3888237828F42F56005C7B25 /* StaticAppHeader.swift */,
 				389FDF7A28F43A7100BA0AFB /* YoutubePlayer.swift */,
 				389FDF7C28F4616300BA0AFB /* CustomTabBar.swift */,
+				93E1A72C2903EA9100BF7FD2 /* Loading.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				3888238728F43116005C7B25 /* MovieInfoViewModel.swift in Sources */,
 				38ADC45C28F50DC3001F4F71 /* DiscoverViewModel.swift in Sources */,
 				3888232B28F42C4B005C7B25 /* FilmCatalogueApp.swift in Sources */,
+				93E1A72D2903EA9100BF7FD2 /* Loading.swift in Sources */,
 				3888237928F42F56005C7B25 /* StaticAppHeader.swift in Sources */,
 				38ADC46C28F54AF7001F4F71 /* MovieInfoInteractor.swift in Sources */,
 			);

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainScreen: View {
-    
     var body: some View {
         NavigationStack{
             TabView{
@@ -25,24 +24,6 @@ struct MainScreen: View {
                     }
             }
         }
-    }
-    
-    var internetError: some View{
-        HStack(alignment: .center){
-            Spacer()
-            VStack(alignment: .center, spacing: 10){
-                Spacer()
-                Text("There's something wrong with the connection")
-                    .font(.body)
-                    .foregroundColor(.lightGrey)
-                Text("Please check your internet connection")
-                    .font(.body)
-                    .foregroundColor(.lightGrey)
-                Spacer()
-            }
-            Spacer()
-        }
-            .background(Color.black)
     }
 }
 

@@ -13,7 +13,6 @@ class MovieViewModel: ObservableObject{
     @Published var movieListHeaders: MovieListHeaders?
     @Published var movieDetails: [MovieDetail]?
     @Published var movieType: GetMovieType = .NowPlaying
-    @Published var allGetMovieCategory: [GetMovieType] = [.NowPlaying, .Popular, .Upcoming, .TopRated]
     @Published var lastVideoID: Int = 0
     @Published var nextPage: Int = 1
     @Published var movieStatus: Bool
