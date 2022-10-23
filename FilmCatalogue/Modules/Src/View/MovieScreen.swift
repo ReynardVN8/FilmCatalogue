@@ -10,11 +10,6 @@ import SwiftUI
 struct MovieScreen: View {
     @ObservedObject var movieVM = MovieViewModel()
     
-    let column = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
     init(){
         movieVM.getMovies()
     }
@@ -44,8 +39,8 @@ struct MovieScreen: View {
     var content: some View{
         ScrollView{
             Spacer()
-                .frame(height: 110)
-            LazyVGrid(columns: column, spacing: 10){
+                .frame(height: 105)
+            LazyVGrid(columns: columnMain, spacing: 10){
                 ForEach(movieVM.movieDetails ?? []){ movies in
                     Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
                         .onAppear(){
