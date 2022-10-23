@@ -20,11 +20,13 @@ struct Trailer: Codable, Identifiable{
     let id: String
     let name: String
     let key: String
+    let type: String
     
     init(_ json: JSON){
         id = json["id"].stringValue
         name = json["name"].stringValue
         key = json["key"].stringValue
+        type = json["type"].stringValue
     }
 }
 

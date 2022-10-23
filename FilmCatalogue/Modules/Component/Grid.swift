@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+let columnMain = [
+    GridItem(.flexible()),
+    GridItem(.flexible())
+]
+
 struct Grid: View{
     var id: Int
     var title: String
