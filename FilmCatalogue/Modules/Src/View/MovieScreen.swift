@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MovieScreen: View {
-    @ObservedObject var movieVM = MovieViewModel()
+    @ObservedObject var movieI = MovieInteractor()
+    var mainP = MainPresenter()
     
     let column = [
         GridItem(.flexible()),
@@ -16,13 +17,13 @@ struct MovieScreen: View {
     ]
     
     init(){
-        movieVM.getMovies()
+        movieI.getMovies()
     }
     
     var body: some View {
         ZStack{
             VStack{
-                if(movieVM.movieStatus){
+                if(movieI.movieStatus){
                     ZStack{
                         content
                     }
@@ -32,7 +33,7 @@ struct MovieScreen: View {
             }
             VStack(alignment: .center, spacing: 0){
                 HeaderMainScreen()
-                MovieTabBar(MVM: movieVM)
+                MovieTabBar(MI: movieI)
                 Spacer()
                 Color.lightYellow
                     .frame(height: 90)
@@ -46,11 +47,11 @@ struct MovieScreen: View {
             Spacer()
                 .frame(height: 110)
             LazyVGrid(columns: column, spacing: 10){
-                ForEach(movieVM.movieDetails ?? []){ movies in
+                ForEach(movieI.movieDetails ?? []){ movies in
                     Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
                         .onAppear(){
-                            if(movies.id == movieVM.lastVideoID && movieVM.nextPage <= movieVM.movieListHeaders?.total_pages ?? 1){
-                                movieVM.getMovies()
+                            if(mainP.isLastScreen(currentID: movies.id, lastID: movieI.lastVideoID, nextPage: movieI.nextPage, totalPage: movieI.movieListHeaders?.total_pages ?? 1)){
+                                movieI.getMovies()
                             }
                         }
                 }

@@ -1,5 +1,5 @@
 //
-//  DiscoverViewModel.swift
+//  DiscoverInteractor.swift
 //  FilmCatalogue
 //
 //  Created by Reynard Vincent Nata on 11/10/22.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class DiscoverViewModel: ObservableObject{
+class DiscoverInteractor: ObservableObject{
     @Published var movieListHeaders: MovieListHeaders?
     @Published var moviesByGenre: [MovieDetail]?
     @Published var genreHeaders: GenreHeaders?

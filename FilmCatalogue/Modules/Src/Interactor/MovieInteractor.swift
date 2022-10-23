@@ -1,5 +1,5 @@
 //
-//  MovieViewModel.swift
+//  MovieInteractor.swift
 //  FilmCatalogue
 //
 //  Created by Reynard Vincent Nata on 11/10/22.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class MovieViewModel: ObservableObject{
+class MovieInteractor: ObservableObject{
     @Published var movieListHeaders: MovieListHeaders?
     @Published var movieDetails: [MovieDetail]?
     @Published var movieType: GetMovieType = .NowPlaying

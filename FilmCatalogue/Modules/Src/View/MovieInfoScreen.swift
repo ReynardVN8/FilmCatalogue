@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MovieInfoScreen: View {
-    @ObservedObject var movieInfoVM = MovieInfoViewModel()
+    @ObservedObject var movieInfoI = MovieInfoInteractor()
     @State var isPresented = false
     
     var currentPage = 1
     
     init(id: Int){
-        movieInfoVM.movieID = id
+        movieInfoI.movieID = id
     }
     
     var body: some View {
@@ -25,7 +25,7 @@ struct MovieInfoScreen: View {
             Spacer().frame(height: 35)
             Button {
                 isPresented = true
-                movieInfoVM.getReview(page: 1)
+                movieInfoI.getReview(page: 1)
             } label: {
                 Text("Click for the reviews")
                     .foregroundColor(.white)
@@ -38,8 +38,8 @@ struct MovieInfoScreen: View {
                 .cornerRadius(3)
         }
             .onAppear(){
-                movieInfoVM.getTrailer()
-                movieInfoVM.getDetailedMovie()
+                movieInfoI.getTrailer()
+                movieInfoI.getDetailedMovie()
             }
             .sheet(isPresented: $isPresented, content: {
                 reviewSection
@@ -50,9 +50,9 @@ struct MovieInfoScreen: View {
     
     var youtubeSection: some View{
         ZStack(alignment: .center) {
-            KFI(type: .backdrop, image: movieInfoVM.movieInfo?.backdrop_path ?? "")
-            if(movieInfoVM.trailerStatus){
-                YoutubePlayer(movieInfoVM.youtubeKey ?? "")
+            KFI(type: .backdrop, image: movieInfoI.movieInfo?.backdrop_path ?? "")
+            if(movieInfoI.trailerStatus){
+                YoutubePlayer(movieInfoI.youtubeKey ?? "")
             }
         }
             .aspectRatio(16/9, contentMode: .fit)
@@ -60,35 +60,35 @@ struct MovieInfoScreen: View {
     
     var movieInfoSection: some View{
         VStack(alignment: .leading, spacing: 12.5) {
-            if(movieInfoVM.descriptionStatus){
+            if(movieInfoI.descriptionStatus){
                 HStack(alignment: .center, spacing: 10){
-                    KFI(type: .smallPoster, image: movieInfoVM.movieInfo?.poster_path ?? "")
+                    KFI(type: .smallPoster, image: movieInfoI.movieInfo?.poster_path ?? "")
                         .aspectRatio(2/3, contentMode: .fit)
                     VStack(alignment: .leading, spacing: 3) {
-                        Text(movieInfoVM.movieInfo?.title ?? "")
+                        Text(movieInfoI.movieInfo?.title ?? "")
                             .font(.title)
                             .foregroundColor(.white)
                             .bold()
                         HStack(alignment: .center){
-                            ForEach(movieInfoVM.genres ?? []) { genre in
+                            ForEach(movieInfoI.genres ?? []) { genre in
                                 Text(genre.name)
                                     .foregroundColor(.white)
                             }
                         }
                         Spacer()
-                        Text("Released Date: \(movieInfoVM.releasedDate)")
+                        Text("Released Date: \(movieInfoI.releasedDate)")
                             .foregroundColor(.white)
-                        Text("Rating: \(movieInfoVM.rating)")
+                        Text("Rating: \(movieInfoI.rating)")
                             .foregroundColor(.white)
                     }
                     .padding(.vertical, 5)
                     Spacer()
                 }
                 .frame(height: 150)
-                Text(movieInfoVM.movieInfo?.overview ?? "")
+                Text(movieInfoI.movieInfo?.overview ?? "")
                     .foregroundColor(.white)
                 Spacer()
-                Text("Website: \(movieInfoVM.movieInfo?.homepage ?? "")")
+                Text("Website: \(movieInfoI.movieInfo?.homepage ?? "")")
                     .foregroundColor(.white)
             } else {
                 Spacer()
@@ -101,10 +101,10 @@ struct MovieInfoScreen: View {
     
     var reviewSection: some View {
         VStack{
-            if(movieInfoVM.reviewStatus){
+            if(movieInfoI.reviewStatus){
                 ScrollView{
-                    ForEach(movieInfoVM.review ?? []){ review in
-                        ReviewList(authorDetail: review.author_details, content: review.content, createdAt: movieInfoVM.convertToCreatedDate(review.created_at))
+                    ForEach(movieInfoI.review ?? []){ review in
+                        ReviewList(authorDetail: review.author_details, content: review.content, createdAt: movieInfoI.convertToCreatedDate(review.created_at))
                     }
                 }
             } else {

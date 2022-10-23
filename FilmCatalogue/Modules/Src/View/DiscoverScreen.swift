@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DiscoverScreen: View {
-    @ObservedObject var discoverVM = DiscoverViewModel()
+    @ObservedObject var discoverI = DiscoverInteractor()
+    var mainP = MainPresenter()
     
     let column = [
         GridItem(.flexible()),
@@ -16,14 +17,14 @@ struct DiscoverScreen: View {
     ]
     
     init(){
-        discoverVM.getGenres()
-        discoverVM.getMoviesByGenre()
+        discoverI.getGenres()
+        discoverI.getMoviesByGenre()
     }
     
     var body: some View {
         ZStack{
             VStack{
-                if(discoverVM.discoverStatus){
+                if(discoverI.discoverStatus){
                     content
                 } else {
                     internetError
@@ -31,7 +32,7 @@ struct DiscoverScreen: View {
             }
             VStack(alignment: .center, spacing: 0){
                 HeaderMainScreen()
-                DiscoverTabBar(DVM: discoverVM)
+                DiscoverTabBar(DI: discoverI)
                 Spacer()
                 Color.lightYellow
                     .frame(height: 90)
@@ -45,11 +46,11 @@ struct DiscoverScreen: View {
             Spacer()
                 .frame(height: 110)
             LazyVGrid(columns: column, spacing: 20){
-                ForEach(discoverVM.moviesByGenre ?? []){ movies in
+                ForEach(discoverI.moviesByGenre ?? []){ movies in
                     Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
                         .onAppear(){
-                            if(movies.id == discoverVM.lastVideoID && discoverVM.nextPage <= discoverVM.movieListHeaders?.total_pages ?? 1){
-                                discoverVM.getMoviesByGenre()
+                            if(mainP.isLastScreen(currentID: movies.id, lastID: discoverI.lastVideoID, nextPage: discoverI.nextPage, totalPage: discoverI.movieListHeaders?.total_pages ?? 1)){
+                                discoverI.getMoviesByGenre()
                             }
                         }
                 }

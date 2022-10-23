@@ -9,16 +9,16 @@ import SwiftUI
 
 //MARK: Janky
 struct MovieTabBar: View{
-    var MVM: MovieViewModel
+    var MI: MovieInteractor
     
     var body: some View{
         ScrollView(.horizontal){
             HStack(alignment: .center, spacing: 10){
                 Button {
-                    MVM.movieDetails?.removeAll()
-                    MVM.nextPage = 1
-                    MVM.movieType = .NowPlaying
-                    MVM.getMovies()
+                    MI.movieDetails?.removeAll()
+                    MI.nextPage = 1
+                    MI.movieType = .NowPlaying
+                    MI.getMovies()
                 } label: {
                     Text("Now Playing")
                         .font(.title3)
@@ -28,10 +28,10 @@ struct MovieTabBar: View{
                 }
                 
                 Button {
-                    MVM.movieDetails?.removeAll()
-                    MVM.nextPage = 1
-                    MVM.movieType = .Popular
-                    MVM.getMovies()
+                    MI.movieDetails?.removeAll()
+                    MI.nextPage = 1
+                    MI.movieType = .Popular
+                    MI.getMovies()
                 } label: {
                     Text("Popular")
                         .font(.title3)
@@ -41,10 +41,10 @@ struct MovieTabBar: View{
                 }
                 
                 Button {
-                    MVM.movieDetails?.removeAll()
-                    MVM.nextPage = 1
-                    MVM.movieType = .Upcoming
-                    MVM.getMovies()
+                    MI.movieDetails?.removeAll()
+                    MI.nextPage = 1
+                    MI.movieType = .Upcoming
+                    MI.getMovies()
                 } label: {
                     Text("Upcoming")
                         .font(.title3)
@@ -54,10 +54,10 @@ struct MovieTabBar: View{
                 }
                 
                 Button {
-                    MVM.movieDetails?.removeAll()
-                    MVM.nextPage = 1
-                    MVM.movieType = .TopRated
-                    MVM.getMovies()
+                    MI.movieDetails?.removeAll()
+                    MI.nextPage = 1
+                    MI.movieType = .TopRated
+                    MI.getMovies()
                 } label: {
                     Text("Top Rated")
                         .font(.title3)
@@ -72,23 +72,23 @@ struct MovieTabBar: View{
 }
 
 struct DiscoverTabBar: View {
-    var DVM: DiscoverViewModel
+    var DI: DiscoverInteractor
     
     var body: some View {
         ScrollView(.horizontal){
             HStack(alignment: .center, spacing: 10){
-                ForEach(DVM.genre ?? []){ genre in
+                ForEach(DI.genre ?? []){ genre in
                     Button {
-                        DVM.moviesByGenre?.removeAll()
-                        DVM.nextPage = 1
-                        DVM.currentGenre = genre.id
-                        DVM.getMoviesByGenre()
+                        DI.moviesByGenre?.removeAll()
+                        DI.nextPage = 1
+                        DI.currentGenre = genre.id
+                        DI.getMoviesByGenre()
                     } label: {
                         Text(genre.name)
                             .font(.title3)
                             .foregroundColor(.white)
-//                            .bold(genre.id == DVM.gerneID)
-//                            .underline(genre.id == DVM.gerneID)
+//                            .bold(genre.id == DI.gerneID)
+//                            .underline(genre.id == DI.gerneID)
                             .padding(10)
                             .cornerRadius(2)
                     }

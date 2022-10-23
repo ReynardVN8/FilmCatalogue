@@ -1,5 +1,5 @@
 //
-//  MovieInfoViewModel.swift
+//  MovieInfoInteractor.swift
 //  FilmCatalogue
 //
 //  Created by Reynard Vincent Nata on 10/10/22.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-class MovieInfoViewModel: ObservableObject{
+class MovieInfoInteractor: ObservableObject{
     @Published var trailerHeaders: TrailerHeaders?
     @Published var trailer: [Trailer]?
     @Published var movieInfo: MovieDetail?
