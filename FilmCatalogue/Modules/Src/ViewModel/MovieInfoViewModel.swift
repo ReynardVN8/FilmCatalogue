@@ -46,10 +46,10 @@ class MovieInfoViewModel: ObservableObject{
                     self.trailerHeaders = TrailerHeaders(json!)
                     self.trailer = (self.trailerHeaders?.result)
                     
-                    if let trailer = self.trailer?.first(where: {$0.name == "Official Trailer"}){
+                    if let trailer = self.trailer?.last(where: {$0.type == "Trailer"}){
                         self.youtubeKey = trailer.key
                         self.trailerStatus = true
-                    } else if let trailer = self.trailer?.first(where: {$0.name == "Teaser"}) {
+                    } else if let trailer = self.trailer?.last(where: {$0.type == "Teaser"}) {
                         self.youtubeKey = trailer.key
                         self.trailerStatus = true
                     }
@@ -71,12 +71,14 @@ class MovieInfoViewModel: ObservableObject{
             
             switch response.result{
             case .success:
-                let json = try? JSON(data: response.data!)
-                self.movieInfo = MovieDetail(json!)
-                self.genres = (self.movieInfo?.genres)
-                self.releasedDate = self.convertToReleasedDate(self.movieInfo?.release_date ?? "")
-                self.rating = self.movieInfo?.vote_average.toString1Decimal() ?? "No Rating"
-                self.descriptionStatus = true
+                if(response.data != nil){
+                    let json = try? JSON(data: response.data!)
+                    self.movieInfo = MovieDetail(json!)
+                    self.genres = (self.movieInfo?.genres)
+                    self.releasedDate = self.convertToReleasedDate(self.movieInfo?.release_date ?? "")
+                    self.rating = self.movieInfo?.vote_average.toString1Decimal() ?? "No Rating"
+                    self.descriptionStatus = true
+                }
                 
             case let .failure(error):
                 debugPrint(error)
@@ -95,14 +97,15 @@ class MovieInfoViewModel: ObservableObject{
             
             switch response.result{
             case .success:
-                let json = try? JSON(data: response.data!)
-                self.reviewHeaders = ReviewHeaders(json!)
-                self.review = (self.reviewHeaders?.results)
-                if(self.review!.isEmpty){
-                    self.reviewStatus = false
-                } else {
-                    self.reviewStatus = true
+                if(response.data != nil){
+                    let json = try? JSON(data: response.data!)
+                    self.reviewHeaders = ReviewHeaders(json!)
+                    self.review = (self.reviewHeaders?.results)
+                    if(!self.review!.isEmpty){
+                        self.reviewStatus = true
+                    }
                 }
+                
             case let.failure(error):
                 debugPrint(error)
                 self.reviewStatus = false
