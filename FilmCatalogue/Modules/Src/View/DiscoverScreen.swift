@@ -10,11 +10,6 @@ import SwiftUI
 struct DiscoverScreen: View {
     @ObservedObject var discoverVM = DiscoverViewModel()
     
-    let column = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
     init(){
         discoverVM.getGenres()
         discoverVM.getMoviesByGenre()
@@ -43,8 +38,8 @@ struct DiscoverScreen: View {
     var content: some View{
         ScrollView{
             Spacer()
-                .frame(height: 110)
-            LazyVGrid(columns: column, spacing: 20){
+                .frame(height: 105)
+            LazyVGrid(columns: columnMain, spacing: 10){
                 ForEach(discoverVM.moviesByGenre ?? []){ movies in
                     Grid(id: movies.id, title: movies.title, poster: movies.poster_path)
                         .onAppear(){
