@@ -146,8 +146,8 @@
 		3888232928F42C4B005C7B25 /* FilmCatalogue */ = {
 			isa = PBXGroup;
 			children = (
-				3888236128F42D69005C7B25 /* Api */,
-				3888236028F42D58005C7B25 /* Modules */,
+				3888236028F42D58005C7B25 /* Src */,
+				93BDC37C29069464008B0050 /* Main */,
 				3888232E28F42C53005C7B25 /* Assets.xcassets */,
 				3888233028F42C53005C7B25 /* Preview Content */,
 			);
@@ -179,14 +179,16 @@
 			path = FilmCatalogueUITests;
 			sourceTree = "<group>";
 		};
-		3888236028F42D58005C7B25 /* Modules */ = {
+		3888236028F42D58005C7B25 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				3888236428F42D8C005C7B25 /* Src */,
-				3888236328F42D83005C7B25 /* Component */,
-				3888236228F42D76005C7B25 /* Extension */,
+				3888236128F42D69005C7B25 /* Api */,
+				3888236428F42D8C005C7B25 /* Modules */,
+				3888236728F42DA1005C7B25 /* Models */,
+				3888236328F42D83005C7B25 /* Components */,
+				3888236228F42D76005C7B25 /* Utils */,
 			);
-			path = Modules;
+			path = Src;
 			sourceTree = "<group>";
 		};
 		3888236128F42D69005C7B25 /* Api */ = {
@@ -197,7 +199,7 @@
 			path = Api;
 			sourceTree = "<group>";
 		};
-		3888236228F42D76005C7B25 /* Extension */ = {
+		3888236228F42D76005C7B25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				3888236A28F42E50005C7B25 /* Date+Extension.swift */,
@@ -205,10 +207,10 @@
 				3888236E28F42E79005C7B25 /* Color+Extension.swift */,
 				3888237028F42E9E005C7B25 /* Double+Extension.swift */,
 			);
-			path = Extension;
+			path = Utils;
 			sourceTree = "<group>";
 		};
-		3888236328F42D83005C7B25 /* Component */ = {
+		3888236328F42D83005C7B25 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				3888237228F42F10005C7B25 /* KingFisherImage.swift */,
@@ -219,42 +221,38 @@
 				389FDF7C28F4616300BA0AFB /* CustomTabBar.swift */,
 				93E1A72C2903EA9100BF7FD2 /* Loading.swift */,
 			);
-			path = Component;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		3888236428F42D8C005C7B25 /* Src */ = {
+		3888236428F42D8C005C7B25 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				3888236728F42DA1005C7B25 /* Model */,
-				3888236628F42D9A005C7B25 /* ViewModel */,
-				3888236528F42D93005C7B25 /* View */,
+				93BDC37B29069417008B0050 /* Movie */,
+				3888236628F42D9A005C7B25 /* Discover */,
+				3888236528F42D93005C7B25 /* MovieInfo */,
 			);
-			path = Src;
+			path = Modules;
 			sourceTree = "<group>";
 		};
-		3888236528F42D93005C7B25 /* View */ = {
+		3888236528F42D93005C7B25 /* MovieInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3888232A28F42C4B005C7B25 /* FilmCatalogueApp.swift */,
-				3888238828F43154005C7B25 /* MainScreen.swift */,
-				38ADC45728F50D88001F4F71 /* MovieScreen.swift */,
-				38ADC45528F50D77001F4F71 /* DiscoverScreen.swift */,
+				3888238628F43116005C7B25 /* MovieInfoViewModel.swift */,
 				3888238A28F43161005C7B25 /* MovieInfoScreen.swift */,
 			);
-			path = View;
+			path = MovieInfo;
 			sourceTree = "<group>";
 		};
-		3888236628F42D9A005C7B25 /* ViewModel */ = {
+		3888236628F42D9A005C7B25 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				38ADC45D28F50DD9001F4F71 /* MovieViewModel.swift */,
 				38ADC45B28F50DC3001F4F71 /* DiscoverViewModel.swift */,
-				3888238628F43116005C7B25 /* MovieInfoViewModel.swift */,
+				38ADC45528F50D77001F4F71 /* DiscoverScreen.swift */,
 			);
-			path = ViewModel;
+			path = Discover;
 			sourceTree = "<group>";
 		};
-		3888236728F42DA1005C7B25 /* Model */ = {
+		3888236728F42DA1005C7B25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3888237C28F4305A005C7B25 /* Movies.swift */,
@@ -262,7 +260,25 @@
 				3888238028F43072005C7B25 /* Trailers.swift */,
 				3888238228F4307B005C7B25 /* Reviews.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		93BDC37B29069417008B0050 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				38ADC45D28F50DD9001F4F71 /* MovieViewModel.swift */,
+				38ADC45728F50D88001F4F71 /* MovieScreen.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		93BDC37C29069464008B0050 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3888232A28F42C4B005C7B25 /* FilmCatalogueApp.swift */,
+				3888238828F43154005C7B25 /* MainScreen.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,7 +614,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,7 +645,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
