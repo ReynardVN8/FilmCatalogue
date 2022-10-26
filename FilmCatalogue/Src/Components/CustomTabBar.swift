@@ -28,20 +28,12 @@ struct MovieTabBar: View{
                         currentType = type
                         MVM.getMovies()
                     } label: {
-                        if(currentType == type){
-                            Text(MVM.loadTypeTabBar(type))
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .underline()
-                                .padding(10)
-                                .cornerRadius(2)
-                        } else {
-                            Text(MVM.loadTypeTabBar(type))
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .cornerRadius(2)
-                        }
+                        Text(MVM.loadTypeTabBar(type))
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .underline(currentType == type)
+                            .padding(10)
+                            .cornerRadius(2)
                     }
                 }
             }
@@ -70,20 +62,12 @@ struct DiscoverTabBar: View {
                         currentGenre = genre.id
                         DVM.getMoviesByGenre()
                     } label: {
-                        if(currentGenre == genre.id){
-                            Text(genre.name)
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .underline()
-                                .padding(10)
-                                .cornerRadius(2)
-                        } else {
-                            Text(genre.name)
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .padding(10)
-                                .cornerRadius(2)
-                        }
+                        Text(genre.name)
+                            .font(.title3)
+                            .foregroundColor(.white)
+                            .underline(currentGenre == genre.id)
+                            .padding(10)
+                            .cornerRadius(2)
                     }
                 }
             }
