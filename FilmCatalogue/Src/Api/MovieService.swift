@@ -15,7 +15,7 @@ let APIKey = "fd99578f5667a6cec7e3d7c789f7175f"
 let baseImageURL = "https://image.tmdb.org/t/p"
 
 //GET Movie
-enum GetMovieType: String{
+enum GetMovieType: String, Hashable{
     case NowPlaying = "/now_playing"
     case Popular = "/popular"
     case TopRated = "/top_rated"

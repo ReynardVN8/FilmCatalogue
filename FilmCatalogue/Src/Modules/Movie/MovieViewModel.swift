@@ -46,5 +46,18 @@ class MovieViewModel: ObservableObject{
             
         }
     }
+    
+    func loadTypeTabBar(_ currentType: GetMovieType) -> String{
+        switch currentType{
+        case .NowPlaying:
+            return "Now Playing"
+        case .Popular:
+            return "Popular"
+        case .TopRated:
+            return "Top Rated"
+        case .Upcoming:
+            return "Upcoming"
+        }
+    }
 }
 
