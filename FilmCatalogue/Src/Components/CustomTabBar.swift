@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct MovieTabBar: View{
+    @State var currentType: GetMovieType
     var AllMovieType: [GetMovieType] = [.NowPlaying, .Popular, .Upcoming, .TopRated]
     var MVM: MovieViewModel
+    
+    init(MVM: MovieViewModel) {
+        self.MVM = MVM
+        self.currentType = MVM.movieType
+    }
     
     var body: some View{
         ScrollView(.horizontal){
@@ -19,13 +25,23 @@ struct MovieTabBar: View{
                         MVM.movieDetails?.removeAll()
                         MVM.nextPage = 1
                         MVM.movieType = type
+                        currentType = type
                         MVM.getMovies()
                     } label: {
-                        Text(MVM.loadTypeTabBar(type))
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .padding(10)
-                            .cornerRadius(2)
+                        if(currentType == type){
+                            Text(MVM.loadTypeTabBar(type))
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .underline()
+                                .padding(10)
+                                .cornerRadius(2)
+                        } else {
+                            Text(MVM.loadTypeTabBar(type))
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .cornerRadius(2)
+                        }
                     }
                 }
             }
@@ -35,7 +51,13 @@ struct MovieTabBar: View{
 }
 
 struct DiscoverTabBar: View {
+    @State var currentGenre: Int
     var DVM: DiscoverViewModel
+    
+    init(DVM: DiscoverViewModel) {
+        self.DVM = DVM
+        self.currentGenre = DVM.currentGenre
+    }
     
     var body: some View {
         ScrollView(.horizontal){
@@ -45,15 +67,23 @@ struct DiscoverTabBar: View {
                         DVM.moviesByGenre?.removeAll()
                         DVM.nextPage = 1
                         DVM.currentGenre = genre.id
+                        currentGenre = genre.id
                         DVM.getMoviesByGenre()
                     } label: {
-                        Text(genre.name)
-                            .font(.title3)
-                            .foregroundColor(.white)
-//                            .bold(genre.id == DVM.gerneID)
-//                            .underline(genre.id == DVM.gerneID)
-                            .padding(10)
-                            .cornerRadius(2)
+                        if(currentGenre == genre.id){
+                            Text(genre.name)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .underline()
+                                .padding(10)
+                                .cornerRadius(2)
+                        } else {
+                            Text(genre.name)
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .cornerRadius(2)
+                        }
                     }
                 }
             }
