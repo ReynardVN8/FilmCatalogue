@@ -22,7 +22,7 @@ struct ReviewList: View{
     var body: some View{
         VStack(alignment: .leading, spacing: 12.5){
             HStack(){
-                KFI(type: .smallPoster, image: authorDetail.avatar_path)
+                ImageLoader(type: .smallPoster, image: authorDetail.avatar_path)
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())

@@ -50,7 +50,7 @@ struct MovieInfoScreen: View {
     
     var youtubeSection: some View{
         ZStack(alignment: .center) {
-            KFI(type: .backdrop, image: movieInfoVM.movieInfo?.backdrop_path ?? "")
+            ImageLoader(type: .backdrop, image: movieInfoVM.movieInfo?.backdrop_path ?? "")
             if(movieInfoVM.trailerStatus){
                 YoutubePlayer(movieInfoVM.youtubeKey ?? "")
             }
@@ -62,7 +62,7 @@ struct MovieInfoScreen: View {
         VStack(alignment: .leading, spacing: 12.5) {
             if(movieInfoVM.descriptionStatus){
                 HStack(alignment: .center, spacing: 10){
-                    KFI(type: .smallPoster, image: movieInfoVM.movieInfo?.poster_path ?? "")
+                    ImageLoader(type: .smallPoster, image: movieInfoVM.movieInfo?.poster_path ?? "")
                         .aspectRatio(2/3, contentMode: .fit)
                     VStack(alignment: .leading, spacing: 3) {
                         Text(movieInfoVM.movieInfo?.title ?? "")

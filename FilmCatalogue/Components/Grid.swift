@@ -22,7 +22,7 @@ struct Grid: View{
             MovieInfoScreen(id: id)
         } label: {
             VStack(alignment: .center, spacing: 5){
-                KFI(type: .mediumPoster, image: poster)
+                ImageLoader(type: .mediumPoster, image: poster)
                     .aspectRatio(2/3, contentMode: .fit)
                 Text(title)
                     .font(.body)

@@ -1,13 +1,46 @@
 //
-//  Loading.swift
+//  ContentLoader.swift
 //  FilmCatalogue
 //
-//  Created by ReynardVN8 on 22/10/22.
+//  Created by ReynardVN8 on 17/10/23.
 //
 
 import Foundation
 import SwiftUI
+import YouTubePlayerKit
 
+//MARK: Youtube Player
+struct YoutubePlayer: View {
+    var youtubePlayer: YouTubePlayer
+    
+    init(_ youtubeKey: String) {
+        youtubePlayer = YouTubePlayer(
+            source: .video(id: youtubeKey),
+            configuration: .init(
+                autoPlay: false,
+                showControls: true
+            )
+        )
+    }
+    
+    var body: some View {
+        YouTubePlayerView(youtubePlayer)
+    }
+}
+
+//MARK: Image Renderer
+struct ImageLoader: View {
+    var type: GetImageType
+    var image: String
+    
+    var body: some View {
+        AsyncImage(url: URL(string: "\(baseImageURL)\(type.rawValue)\(image)")) { image in
+            image.image?.resizable()
+        }
+    }
+}
+
+//MARK: Loading Screen Image
 struct Loading: View {
     @State var spinnerStart: CGFloat = 0.0
     @State var spinnerEndS1: CGFloat = 0.10
