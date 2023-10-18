@@ -15,7 +15,6 @@ class DiscoverViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel.currentGenre = 28
-        viewModel.genre = [Genre]()
         viewModel.movieListHeaders = MovieListHeaders([])
         viewModel.genreHeaders = GenreHeaders([])
     }
