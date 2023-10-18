@@ -20,6 +20,5 @@ class MovieViewModelTests: XCTestCase {
 
     func testLoadingMovies() {
         XCTAssertNotNil(viewModel.getMovies())
-        
     }
 }

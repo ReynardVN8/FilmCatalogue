@@ -22,6 +22,13 @@ class DiscoverViewModelTests: XCTestCase {
 
     func testLoadingGenres() {
         XCTAssertNotNil(viewModel.getGenres())
+        guard let genres = viewModel.genre else {
+            return
+        }
+        XCTAssert("\(genres)".contains("Action"))
+        XCTAssert("\(genres)".contains("Horror"))
+        XCTAssert("\(genres)".contains("Drama"))
+        XCTAssert("\(genres)".contains("Mystery"))
     }
     
     func testLoadingMoviesBasedOnGenres(){
