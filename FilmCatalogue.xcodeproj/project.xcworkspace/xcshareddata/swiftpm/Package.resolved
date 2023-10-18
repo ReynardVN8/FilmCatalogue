@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
-        "version" : "5.6.2"
+        "revision" : "b2fa556e4e48cbf06cf8c63def138c98f4b811fa",
+        "version" : "5.8.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
       "state" : {
-        "revision" : "48b3716ce316bb67c19b10c4335f356b195dd72e",
-        "version" : "1.2.1"
+        "revision" : "1fe4c8b07a61d50c2fd276e1d9c8087583c7638a",
+        "version" : "1.5.3"
       }
     }
   ],
