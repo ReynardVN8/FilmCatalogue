@@ -29,10 +29,7 @@ struct MovieScreen: View {
                 HeaderMainScreen()
                 MovieTabBar(MVM: movieVM)
                 Spacer()
-                Color.lightYellow
-                    .frame(height: 90)
             }
-                .ignoresSafeArea(edges: .bottom)
         }
     }
     

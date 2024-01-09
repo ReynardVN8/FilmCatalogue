@@ -28,10 +28,7 @@ struct DiscoverScreen: View {
                 HeaderMainScreen()
                 DiscoverTabBar(DVM: discoverVM)
                 Spacer()
-                Color.lightYellow
-                    .frame(height: 90)
             }
-                .ignoresSafeArea(edges: .bottom)
         }
     }
     

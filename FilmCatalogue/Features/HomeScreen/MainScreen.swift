@@ -11,17 +11,22 @@ struct MainScreen: View {
     var body: some View {
         NavigationStack{
             TabView{
-                MovieScreen()
-                    .tabItem{
-                        Image(systemName: "film.circle")
-                        Text("Film")
-                    }
-                
-                DiscoverScreen()
-                    .tabItem{
-                        Image(systemName: "magnifyingglass.circle")
-                        Text("Discover")
-                    }
+                Group{
+                    MovieScreen()
+                        .tabItem{
+                            Image(systemName: "film.circle")
+                            Text("Film")
+                        }
+                    
+                    DiscoverScreen()
+                        .tabItem{
+                            Image(systemName: "magnifyingglass.circle")
+                            Text("Discover")
+                        }
+                }
+                .toolbarBackground(Color.lightYellow, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarColorScheme(.none, for: .tabBar)
             }
         }
     }
